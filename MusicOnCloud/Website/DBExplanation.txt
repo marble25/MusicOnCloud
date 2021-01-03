@@ -1,0 +1,53 @@
+DATABASE : MUSIC_ON_CLOUD
+
+TABLES :
+	MUSICS
+	PLAYLISTS
+	PLAYLISTS_SONGS
+	USERACCESS
+	USERINFO
+
+TABLE INFO
+
+[MUSICS]
+
+idx musicId trackId title artists album
+
+idx : 인덱스
+musicId : 멜론 상의 음악 아이디
+trackId : soundcloud 상의 음악 아이디(실제 재생)
+title : 음악 이름
+artists : 음악 아티스트
+album : 음악 앨범
+
+[PLAYLISTS]
+
+idx userId name
+
+idx : 인덱스
+userId : [USERINFO]의 idx
+name : Playlist의 이름
+
+[PLAYLIST_SONGS]
+
+idx playId songId
+
+idx : 인덱스
+playId : [PLAYLISTS]의 idx
+songId : [MUSICS]의 musicId
+
+[USERACCESS]
+
+idx userId currentTime phoneName
+
+idx : 인덱스
+userId : [USERINFO]의 idx
+currentTime : 접속한 시간
+phoneName : 핸드폰의 기종 및 이름
+
+[USERINFO]
+
+idx userName
+
+idx : 인덱스
+userName : 유저의 이름

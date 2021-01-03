@@ -1,0 +1,114 @@
+common.php
+ - 기본 데이터베이스 접속 파일
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+
+checkUserExists.php  
+ - 역할 : 유저 이름이 있는지 체크 후 유저 이름 삽입
+ - 파라미터 
+ 	pw(기본 검증 패스워드)
+ 	userName(유저 이름)
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+ 	Fail No 2(pw가 틀림)
+ 	Fail No 3(DB 과정 오류)
+ 	Same Name Already Exists(동일한 이름이 이미 DB 상에 존재)
+ 	Success/[userNum](성공, userNum은 DB 상에 idx)
+
+insertCurrentAccess.php
+ - 역할 : 유저가 처음 앱을 킬 때마다 유저의 접속내역을 기록
+ - 파라미터
+ 	pw(기본 검증 패스워드)
+ 	userName(유저 이름)
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+ 	Fail No 2(pw가 틀림)
+ 	Fail No 3(DB 과정 오류)
+ 	Fail No 4(DB 결과 오류)
+ 	Success(성공)
+
+insertMusicPlaylist.php
+ - 역할 : 음악 플레이리스트 이름을 삽입(이름만 삽입, 음악 목록은 삽입 X)
+ - 파라미터
+ 	pw(기본 검증 패스워드)
+ 	userId(유저의 인덱스)
+ 	name(playlist의 이름)
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+ 	Fail No 2(pw가 틀림)
+ 	Fail No 3(DB 과정 오류)
+ 	Same Name Already Exists(동일한 플레이리스트 이름이 이미 DB 상에 존재)
+ 	Success/[playlistNum](성공, playlistNum은 DB상의 playlist idx)
+
+insertMusic.php
+ - 역할 : 음악의 정보를 저장(멜론 상의 정보와 실제 soundcloud의 트랙id를 매칭)
+ - 파라미터
+ 	pw(기본 검증 패스워드)
+ 	musicId(멜론 상의 songId)
+ 	trackId(soundcloud 트랙Id)
+ 	title(음악 이름)
+ 	artists(음악 아티스트)
+ 	album(음악 앨범이름)
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+ 	Fail No 2(pw가 틀림)
+ 	Fail No 3(DB 과정 오류)
+ 	Same Music Already Exists(동일한 musicId가 이미 DB 상에 존재)
+ 	Success(성공)
+
+insertMusicToPlaylist.php
+ - 역할 : 추가적인 음악을 Playlist에 삽입
+ - 파라미터
+ 	pw(기본 검증 패스워드)
+ 	musicId(멜론 상의 songId, 형식은 [musicId]/[musicId]...)
+ 	playId(플레이리스트의 idx)
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+ 	Fail No 2(pw가 틀림)
+ 	Fail No 3(DB 과정 오류)
+ 	Success(성공)
+
+deleteMusicInPlaylist.php
+ - 역할 : 선택된 음악을 Playlist에서 삭제
+ - 파라미터
+ 	pw(기본 검증 패스워드)
+ 	musicId(멜론 상의 songId, 형식은 [musicId]/[musicId]...)
+ 	playId(플레이리스트의 idx)
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+ 	Fail No 2(pw가 틀림)
+ 	Fail No 3(DB 과정 오류)
+ 	Success(성공)
+
+getMusicPlaylist.php
+ - 역할 : [userId]의 Playlist를 모두 가져옴(제목만)
+ - 파라미터
+ 	pw(기본 검증 패스워드)
+ 	userId(유저의 인덱스)
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+ 	Fail No 2(pw가 틀림)
+ 	Fail No 3(DB 과정 오류)
+ 	Success/[playlistIndex]/[playlistName] ...(성공, 1, 3, 5 등 홀수 번째는 플레이리스트의 인덱스, 2, 4, 6 등 짝수 번째는 플레이리스트의 이름)
+
+getMusicPlaylistContent.php
+ - 역할 : [playId]의 곡 목록을 모두 가져옴
+ - 파라미터
+ 	pw(기본 검증 패스워드)
+ 	playId(플레이리스트의 인덱스)
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+ 	Fail No 2(pw가 틀림)
+ 	Fail No 3(DB 과정 오류)
+ 	Success/[trackId]/[title]/[artists]/[album] ...(성공, trackId는 soundcloud의 트랙id, title은 음악 이름, artists는 음악 아티스트, album은 음악 앨범 이름)
+
+getMusic.php
+ - 역할 : [musicId]의 곡 정보를 가져옴
+ - 파라미터
+ 	pw(기본 검증 패스워드)
+ 	musicId(플레이리스트의 인덱스)
+ - 리턴값
+ 	Fail No 1(DB 접속 오류)
+ 	Fail No 2(pw가 틀림)
+ 	Fail No 3(DB 과정 오류)
+ 	Success/[trackId]/[title]/[artists]/[album] ...(성공, trackId는 soundcloud의 트랙id, title은 음악 이름, artists는 음악 아티스트, album은 음악 앨범 이름)

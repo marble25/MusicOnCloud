@@ -1,0 +1,2 @@
+CREATE TABLE USERINFO (`index` int auto_increment, `currentTime` varchar(30), primary key (`index`));
+CREATE TABLE MUSICS (`index` int auto_increment, `musicId` varchar(12), `type` varchar(2), `trackId` varchar(20), primary key (`index`));

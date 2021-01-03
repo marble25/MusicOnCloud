@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_playlist"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context="org.iptime.mascore.musiconcloud.PlaylistActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#EEEEEE">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:id="@+id/text_playlistname"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:gravity="center"
+            android:layout_weight="9"/>
+    </RelativeLayout>
+    <include layout="@layout/header" android:id="@+id/header" android:visibility="gone">
+    </include>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_playlistDetail">
+    </ListView>
+    <include layout="@layout/playbar" android:id="@+id/playbar" android:visibility="gone"/>
+</LinearLayout>
